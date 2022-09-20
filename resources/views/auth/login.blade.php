@@ -51,9 +51,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-          <button type="submit" class="btn-block btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+          <button type="submit" class="btn-block btn btn-primary"> {{ __('Login') }}</button>
 
             <div class="float-right">
             @if (Route::has('password.request'))

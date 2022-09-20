@@ -1,0 +1,16 @@
+<script src="{{asset('portal/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('portal/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{asset('portal/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('portal/plugins/chart.js/Chart.min.js')}}"></script>
+<script src="{{asset('portal/plugins/sparklines/sparkline.js')}}"></script>
+<script src="{{asset('portal/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{asset('portal/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<script src="{{asset('portal/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<script src="{{asset('portal/plugins/moment/moment.min.js')}}"></script>
+<script src="{{asset('portal/plugins/daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('portal/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<script src="{{asset('portal/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{asset('portal/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{asset('portal/dist/js/adminlte.js')}}"></script>
+<script src="{{asset('portal/dist/js/demo.js')}}"></script>
+<script src="{{asset('portal/dist/js/pages/dashboard.js')}}"></script>
