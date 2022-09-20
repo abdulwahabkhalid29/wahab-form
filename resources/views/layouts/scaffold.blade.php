@@ -9,8 +9,11 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     @include('include.nav')
-    @include('include.logout')
-    @include('include.leftnav')
+    @if(auth()->user()->role_id == 1)
+    @include('include.left_admin')
+    @elseif(auth()->user()->role_id == 3)
+    @include('include.left_author')
+    @endif
     @yield('content')
     @include('include.script')
 </body>

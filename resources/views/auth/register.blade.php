@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  body{
+    background:lightgray;
+  }
+</style>
 <div class="container">
+<a href="{{route('index')}}" class="btn btn-primary">Home</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <h1 class="text-center text-danger mt-5">Admin LTE</h1>
         <div class="card">
-        <div class="card-header">{{ __('Register') }}</div>
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
@@ -79,7 +85,7 @@
               </label>
             </div>
           </div>
-          <div class="">
+          <div class="col-md-4">
           <button type="submit" class="btn-block btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
@@ -99,7 +105,7 @@
         </a>
       </div>
 
-      <a href="login.html" class="text-center">I already have a membership</a>
+      <a href="{{route('login')}}" class="text-center">I already have a membership</a>
     </div>
   </div>
         </div>

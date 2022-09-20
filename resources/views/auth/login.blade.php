@@ -1,12 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    body{
+      background-color:lightgray;
+    }
+</style>
 <div class="container">
+<a href="{{route('index')}}" class="btn btn-primary">Home</a>
+
     <div class="row justify-content-center">
         <div class="col-md-8">
+          <h1 class="text-center text-danger mt-5">Admin LTE</h1>
         <div class="card">
-        <div class="card-header">{{ __('Login') }}</div>
-    <div class="card-body login-card-body">
+    <div class="card-body login-card-body ">
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="{{ route('login') }}" method="post">
@@ -52,14 +59,6 @@
           <!-- /.col -->
           <div class="col-4">
           <button type="submit" class="btn-block btn btn-primary"> {{ __('Login') }}</button>
-
-            <div class="float-right">
-            @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-            </div>
           </div>
           <!-- /.col -->
         </div>
@@ -76,11 +75,16 @@
       </div>
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
+      <div class="float-right">
+            @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+            </div>
+
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="{{route('register')}}" class="text-center">Register a new membership</a>
       </p>
     </div>
     <!-- /.login-card-body -->
