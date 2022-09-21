@@ -35,7 +35,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{route('home')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -113,7 +113,24 @@
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+                <a href="{{route('categories.category')}}" class="nav-link">
+                  <i class="fa-solid fa-globe"></i>
+                  <p>Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('reader.index')}}" class="nav-link">
+                  <i class="fa-solid fa-globe"></i>
+                  <p>Reader</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('authors.index')}}" class="nav-link">
+                  <i class="fa-solid fa-globe"></i>
+                  <p>Author</p>
+                </a>
+              </li>
 
         </ul>
       </nav>

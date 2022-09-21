@@ -14,6 +14,7 @@
     @elseif(auth()->user()->role_id == 3)
     @include('include.left_author')
     @endif
+    
     @yield('content')
     @include('include.script')
 </body>
