@@ -12,7 +12,7 @@
 <div class="container mt-5">
     <div class="row">
             <div class="col-md-12">
-                    <a href="{{route('categories.category')}}" class="btn btn-primary float-right mb-2"> VIEW ALL</a>
+                    <a href="{{route('blogs.index')}}" class="btn btn-primary float-right mb-2"> VIEW ALL</a>
             </div>
             @if(Session::has('error'))
             <div class="col-md-12">
@@ -21,9 +21,9 @@
             @endif
     </div>
     <div class="card">
-        <h5 class="card-header text-center  text-dark " > <b>ADD NEW CATEGORY</b></h5>
+        <h5 class="card-header text-center  text-dark " > <b>ADD NEW BLOGS</b></h5>
         <div class="card-body ">
-            <form action="{{route('categories.store')}}" method="POST" >
+            <form action="{{route('blogs.store')}}" method="POST" >
                 @csrf
                 <div class="row">
                     <div class="mt-3 col-md-12">

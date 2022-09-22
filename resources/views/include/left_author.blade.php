@@ -113,7 +113,7 @@
               </li>
             </ul>
             <li class="nav-item">
-                <a href="{{route('categories.category')}}" class="nav-link">
+                <a href="{{route('blogs.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>

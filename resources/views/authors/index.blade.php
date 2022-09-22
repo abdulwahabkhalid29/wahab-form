@@ -7,7 +7,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Role_Id</th>
+                <th>Role</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
                 <td>{{($user->id)}}</td>
                 <td>{{($user->name)}}</td>
                 <td>{{($user->email)}}</td>
-                <td>{{($user->role_id)}}</td>
+                <td>{{($user->role->name)}}</td>
             </tr>
             @endforeach
         </tbody>
