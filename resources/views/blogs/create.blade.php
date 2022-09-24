@@ -1,52 +1,49 @@
 @extends('layouts.scaffold')
 @section('content')
-<style>
-    body{
-        background-color: lightgray;
-    }
-    label{
-        color:black;
-    }
-</style>
-<div style="margin-left: 18%;" class="container mt-5">
-<div class="container mt-5">
-    <div class="row">
-            <div class="col-md-12">
-                    <a href="{{route('blogs.index')}}" class="btn btn-primary float-right mb-2"> VIEW ALL</a>
-            </div>
-            @if(Session::has('error'))
-            <div class="col-md-12">
-                <div class="alert alert-danger">{{Session::get('error')}}</div>
-            </div>
-            @endif
-    </div>
-    <div class="card">
-        <h5 class="card-header text-center  text-dark " > <b>ADD NEW BLOGS</b></h5>
-        <div class="card-body ">
-            <form action="{{route('blogs.store')}}" method="POST" >
-                @csrf
-                <div class="row">
-                    <div class="mt-3 col-md-12">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="{{old('name')}}">
-                        <small class="text-dark">@error('name')  {{$message}} @enderror</small>
-                    </div>
-                    <div class="mt-3 col-md-12">
-                        <label>status</label>
-                        <select name="status"  class="form-control" >
-                            <option value="">Please Select</option>
-                            <option value="1" @if(old("status") == 1) selected @endif>Active</option>
-                            <option value="0" @if(old("status") == 2) selected @endif>Deactive</option>
-                        </select>
-                        <small class="text-dark">@error('status')  {{$message}} @enderror</small>
-                    </div>
-                    <div class="mt-3 col-md-12 mt-3">
-                        <button type="submit" class="btn btn-primary btn-block ">ADD NEW</button>
-                    </div>
+    <div style="margin-left: 18%;" class="container">
+        <form class="mt-5" action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data" novalidate>
+            @csrf
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center text-info">Make Blog</h2>
                 </div>
-            </form>
-        </div>
-      </div>
-</div>
-</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" name="title">
+                            <small class="text-danger">@error ('title') {{ $message }} @enderror</small>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <label for="image">Thumbnail</label>
+                            <input type="file" class="form-control" name="image">
+                            <small class="text-danger">@error ('image') {{ $message }} @enderror</small>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <label for="category_id">Category</label>
+                            <select name="category_id" class="form-control">
+                                <option value="">Please Select</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            <small class="text-danger">@error ('category_id') {{ $message }} @enderror</small>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <label for="content">Content</label>
+                            <textarea name="content" cols="30" rows="10" class="form-control"></textarea>
+                            <small class="text-danger">@error ('content') {{ $message }} @enderror</small>                            
+                        </div>
+                    </div>
+                    <button class="btn btn-success mt-3 btn-block" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection
+@push('scripts')
+<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.1/tinymce.min.js"></script>
+<script>
+    tinymce.init({ selector:'textarea' });
+</script>
+@endpush

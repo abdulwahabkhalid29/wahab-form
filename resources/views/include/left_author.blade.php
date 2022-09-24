@@ -113,21 +113,9 @@
               </li>
             </ul>
             <li class="nav-item">
-                <a href="{{route('blogs.index')}}" class="nav-link">
+                <a href="{{route('blogs.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('reader.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Reader</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('authors.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Author</p>
+                  <p>Blog</p>
                 </a>
               </li>
         </ul>
