@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdminLTE</title>
     @include('include.style')
+    @stack('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     @include('include.nav')
@@ -17,5 +18,6 @@
     
     @yield('content')
     @include('include.script')
+    @stack('scripts')
 </body>
 </html>

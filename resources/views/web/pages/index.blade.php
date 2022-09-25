@@ -64,7 +64,7 @@
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
                             <div class="desc-text mb-20">
-                                 {{ $blog->content }} 
+                                 <!-- {{ $blog->content }}  -->
                             </div>
                             <a href="#" class="read-more">read more</a>
                         </div>
