@@ -20,6 +20,7 @@ class BlogController extends Controller
         }
         $store = Blog::create([
             'title' => $request->title,
+            'blog' => $request->blog,
             'category_id' => $request->category_id,
             'author_id' => auth()->user()->id,
             'content' => $request->content,

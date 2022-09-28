@@ -20,6 +20,23 @@
                             <small class="text-danger">@error ('image') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
+                            <label for="blog">blog</label>
+                            <select name="blog" class="form-control">
+                                <option value="">Please Select</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->blog}}</option>
+                                @endforeach
+                            </select>
+                            <small class="text-danger">@error ('blog') {{ $message }} @enderror</small>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="col-md-12 mt-3">
                             <label for="category_id">Category</label>
                             <select name="category_id" class="form-control">
                                 <option value="">Please Select</option>

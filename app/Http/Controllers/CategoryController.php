@@ -12,16 +12,19 @@ class CategoryController extends Controller
         return view('categories.category' , compact('categories'));
     }
     public function create(){
-        return view('categories.create');
+        $categories = category::get();
+        return view('categories.create', compact('categories'));
     }
     public function store(Request $request){
 
         $request->validate([
-            'name' => 'required|max:191|unique:categories,name',
+            'name' => 'required|max:191|:categories,name',
+            'blog' => 'required|max:191|:categories,blog',
             'status' => 'required',
         ]);
         $store = Category::create([
             'name' => $request->name,
+            'blog' => $request->blog,
             'status' => $request->status,
         ]);
 

@@ -26,10 +26,20 @@
             <form action="{{route('categories.store')}}" method="POST" >
                 @csrf
                 <div class="row">
+                <div class="col-md-12 mt-3">
+                            <label for="name">name</label>
+                            <select name="name" class="form-control">
+                                <option value="">Please Select</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            <small class="text-danger">@error ('name') {{ $message }} @enderror</small>
+                        </div>
                     <div class="mt-3 col-md-12">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="{{old('name')}}">
-                        <small class="text-dark">@error('name')  {{$message}} @enderror</small>
+                        <label>Blog</label>
+                        <input type="text" name="blog" class="form-control" value="{{old('blog')}}">
+                        <small class="text-dark">@error('blog')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-12">
                         <label>status</label>

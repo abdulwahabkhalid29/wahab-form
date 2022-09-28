@@ -37,7 +37,7 @@
                 <div class="col-xl-8 col-lg-8 col-md-12">
                     <div class="postbox mb-40">
                         @foreach($blogs as $blog)
-                        <div class="postbox__thumb mb-25">
+                        <div class="mt-5 postbox__thumb mb-25">
                             <a href="{{url('details')}}">
                                 <img src="{{asset('upload/image/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
                             </a>
@@ -48,6 +48,11 @@
                                     <li>
                                         <span class="post-cat">
                                             <a href="#" tabindex="0">{{ $blog->category->name }}</a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="post-cat">
+                                            <a href="#" tabindex="0">{{ $blog->category->blog }}</a>
                                         </span>
                                     </li>
                                     <li>
@@ -64,7 +69,7 @@
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
                             <div class="desc-text mb-20">
-                                 <!-- {{ $blog->content }}  -->
+                                 {!! $blog->content !!}
                             </div>
                             <a href="#" class="read-more">read more</a>
                         </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->integer('category_id');
             $table->integer('author_id');
+            $table->integer('blog');
             $table->longText('content');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
