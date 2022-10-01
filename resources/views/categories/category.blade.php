@@ -22,7 +22,6 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Blog</th>
                 <th>status</th>
                 <th>Action</th>
             </tr>
@@ -32,7 +31,6 @@
             <tr>
                 <td>{{($category->id)}}</td>
                 <td>{{($category->name)}}</td>
-                <td>{{($category->blog)}}</td>
                 <td>
                     @if($category->status == 1)
                     <span class="bg-success p-2">Active</span>

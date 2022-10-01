@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->integer('category_id');
-            $table->integer('author_id');
-            $table->integer('blog');
-            $table->longText('content');
+            $table->string('category');
+            $table->string('author');
+            $table->longText('short_discription');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\User;
 
 class CategoryController extends Controller
 {
@@ -11,20 +12,20 @@ class CategoryController extends Controller
         $categories = category::get();
         return view('categories.category' , compact('categories'));
     }
+ 
     public function create(){
+        $users = User::where('role_id',3)->get();
         $categories = category::get();
-        return view('categories.create', compact('categories'));
+        return view('categories.create' , compact('users', 'categories'));
     }
     public function store(Request $request){
 
         $request->validate([
-            'name' => 'required|max:191|:categories,name',
-            'blog' => 'required|max:191|:categories,blog',
+            'name' => 'required|max:191|unique:categories,name',
             'status' => 'required',
         ]);
         $store = Category::create([
             'name' => $request->name,
-            'blog' => $request->blog,
             'status' => $request->status,
         ]);
 
@@ -35,11 +36,15 @@ class CategoryController extends Controller
             return redirect()->route('categories.create')->with('error','Something Went Wrong');
         }
 
+        
+
     }
     public function edit($id){
+        $users = User::where('role_id',3)->get();
         $category = Category::where('id',$id)->first();
-        return view('categories.edit',compact('category'));
+        return view('categories.edit',compact('category' , 'users'));
     }
+    
 
     public function update(Request $request, $id){
         $request->validate([ 

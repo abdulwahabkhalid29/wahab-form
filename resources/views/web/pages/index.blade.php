@@ -39,22 +39,20 @@
                         @foreach($blogs as $blog)
                         <div class="mt-5 postbox__thumb mb-25">
                             <a href="{{url('details')}}">
-                                <img src="{{asset('upload/image/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
+                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
                             </a>
                         </div>
                         <div class="postbox__text">
                             <div class="postbox__text-meta pb-20">
                                 <ul>
-                                    <li>
+                                    
+                                <li>
                                         <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category->name }}</a>
+                                            <a href="#" tabindex="0">{{ $blog->category }}</a>
                                         </span>
                                     </li>
-                                    <li>
-                                        <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category->blog }}</a>
-                                        </span>
-                                    </li>
+                                    
+                                    
                                     <li>
                                         <i class="fas fa-calendar-alt"></i>
                                         <span>{{ date('d M Y' , strtotime( $blog->created_at ))}}</span>
@@ -69,7 +67,7 @@
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
                             <div class="desc-text mb-20">
-                                 {!! $blog->content !!}
+                                 {!! $blog->short_discription !!}
                             </div>
                             <a href="#" class="read-more">read more</a>
                         </div>
