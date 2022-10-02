@@ -18,9 +18,10 @@ class BlogController extends Controller
     }
     public function store(Request $request){
         $request->validate([
-            'category' => 'required|max:191|unique:blogs,category',
-            'title' => 'required|max:191:blogs,title', 
-            'short_discription' => 'required|max:8000:blogs,short_discription'                
+            'category_id' => 'required',
+            'title' => 'required',                
+            'image' => 'required',
+            'short_discription' => 'required|max:8000'                
         ]);
         if($request->file('image')){
             $image = $request->file('image');
@@ -28,9 +29,9 @@ class BlogController extends Controller
             $image->move('upload/blog/', $imageName);
         }
         $store = Blog::create([
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'title' => $request->title,
-            'author' => auth()->user()->name,
+            'author_id' => auth()->user()->id,
             'short_discription' => $request->short_discription,
             'image' => $imageName,
         ]);
@@ -48,14 +49,13 @@ class BlogController extends Controller
     }
     public function update(Request $request, $id){
         $request->validate([ 
-        'category' => 'required|:blogs,category,'.$id,
-        'title' => 'required|:blogs,title,'.$id,
-        'image' => 'unique|:blogs,image,'.$id,
-        'short_discription' => 'required|:blogs,short_discription,'.$id,
+            'category_id' => 'required',
+            'title' => 'required|max:191',
+            'short_discription' => 'required|max:8000',
     ]);
-    $imageData = image::where('id',$id)->first();
-    if($request->file('blog')){
-        $image = $request->file('blog');
+    $imageData = Blog::where('id',$id)->first();
+    if($request->file('image')){
+        $image = $request->file('image');
         $imageName = 'blog' . '-' . time() . '.' . $image->getClientOriginalExtension();
         $image->move('upload/blog/', $imageName);
     }
@@ -63,9 +63,9 @@ class BlogController extends Controller
         $imageName = $imageData->blog;
     }
     $update = blog::where('id',$id)->update([
-        'category' => $request->category,
+        'category_id' => $request->category_id,
         'title' => $request->title,
-        'author' => auth()->user()->id,
+        'author_id' => auth()->user()->id,
         'short_discription' => $request->short_discription,
         'image' => $imageName,
     ]);

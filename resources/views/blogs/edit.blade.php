@@ -16,14 +16,14 @@
                 <div class="card-body">
                     <div class="row">
                     <div class="col-md-12 mt-3">
-                            <label for="category">category</label>
-                            <select name="category" class="form-control">
+                            <label for="category_id"> categ  ory</label>
+                            <select name="category_id" class="form-control">
                                 <option value="">Please Select</option>
                                 @foreach($categories as $category)
-                                    <option value="{{$category->name}}" @if($category->name == $blog->category) selected @endif >{{$category->name}}</option>
+                                    <option value="{{$category->id}}" @if($category->id == $blog->category_id) selected @endif >{{$category->name}}</option>
                                 @endforeach
                             </select>
-                            <small class="text-danger">@error ('category') {{ $message }} @enderror</small>
+                            <small class="text-danger">@error ('category_id') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
                             <label for="title">Title</label>
@@ -41,8 +41,8 @@
 
                           
                         <div class="col-md-12 mt-3">
-                            <label for="short_discription">short discription</label>
-                            <textarea name="short_discription" cols="30" rows="7" onKeyPress class="form-control" ></textarea>
+                            <label for="short_discription">Content</label>
+                            <textarea name="short_discription" cols="30" rows="7" onKeyPress class="form-control" >{{$blog->short_discription}}</textarea>
                             <small class="text-danger">@error ('short_discription') {{ $message }} @enderror</small>                            
                         </div>
                        

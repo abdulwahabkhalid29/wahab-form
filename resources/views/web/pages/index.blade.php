@@ -48,7 +48,7 @@
                                     
                                 <li>
                                         <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category }}</a>
+                                            <a href="#" tabindex="0">{{ $blog->category->name }}</a>
                                         </span>
                                     </li>
                                     
@@ -59,7 +59,7 @@
                                     </li>
                                     <li>
                                         <i class="far fa-comment"></i>
-                                        <span>(03)</span>
+                                        <span>(08)</span>
                                     </li>
                                 </ul>
                             </div>
