@@ -10,7 +10,8 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item">
-                                    <a href="index.html">Home</a>
+                                <a href="{{ route('index')}}">Home</a>
+
                                 </li>
                                 <li class="breadcrumb-item">
                                     <a href="#">Library</a>
@@ -31,22 +32,22 @@
                 <div class="col-xl-8 col-lg-8">
                      <!-- post-details -->
                     <div class="post-details">
-                        <h2 class="details-title mb-15">Group continues to sell and market memberships to Premier country club despite.</h2>
+                        <h2 class="details-title mb-15">{{ $blog->title }}</h2>
 
                         <!-- meta -->
                         <div class="postbox__text-meta pb-30">
                             <ul>
                                 <li>
                                     <i class="far fa-user-circle"></i>
-                                    <span>Jonathon Doe</span>
+                                    <span>{{ $blog->author->name }}</span>
                                 </li>
                                 <li>
                                     <i class="fas fa-calendar-alt"></i>
-                                    <span>01 Sep 2018</span>
+                                    <span>{{ date('d M Y' , strtotime( $blog->created_at ))}}</span>
                                 </li>
                                 <li>
                                     <i class="far fa-comment"></i>
-                                    <span>(03)</span>
+                                    <span>(0)</span>
                                 </li>
                             </ul>
                         </div>
@@ -77,38 +78,13 @@
                         </div>
 
                          <!-- post-thumb -->
-                        <div class="post-thumb mb-25">
-                            <img src="{{asset('assets/img/details/post.jpg')}}" alt="">
+                        <div class="post-thumb mb-25 ">
+                            <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG" width="100%">
                         </div>
 
                         <!-- post-content -->
                         <div class="post-content">
-                            <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est Cura tbitur pretium
-                            tincidunt lacus. Nulla gravida orci a odio. Nullam varius turpis et commodo pharetra es ero biben dum elit nec luctus magna
-                            felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus erisus vulputate vehicula. Donec lobortis
-                            risus a elit. Etiam tempor. Ut ullamcorper ligula eu tempor congue eros est euismod turpis id tincidunt sapien risus.</p>
-                            <blockquote>
-                                <p>This is a simple example of a styled blockquote. A blockquote tag typically specifies a section that is quoted from another
-                                    source of some sort, or highlighting text in your post.</p>
-                                <footer>Salim Rana</footer>
-                            </blockquote>
-                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you
-                            a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder
-                            of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
-                            not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who
-                            loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in
-                            which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious
-                            physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to
-                            enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure</p>
-                            <div class="inner-post mb-20 mt-20">
-                                <img src="{{asset('assets/img/details/post-2.jpg')}}" alt="">
-                            </div>
-                            <p>Gathering great you’ll it. Light all may. Wherein two they’re cattle night called likeness upon. Hath days he yielding whales
-                            morning to creature. Two Seasons second saying let third fourth tree doesn’t stars divide. They’re can’t fruitful is sea
-                            over that unto created days. To. Beginning don’t it second. Isn’t give earth created waters thing void, third.</p>
-                            <p>Open likeness creepeth created he male behold that wherein wherein earth seas multiply from living two fruit together. Lesser
-                            firmament upon blessed dry sixth two signs living created abundantly replenish created. Fowl female appear also. Under unto
-                            was evening which gathered fourth sixth. Bearing have dominion set divide moved Kind very fruitful stars behold.</p>
+                           {!! $blog->long_description !!}
                         </div>
 
                         <!-- content__tags -->
