@@ -7,7 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\AuthorUpdateController;
+use App\Http\Controllers\AuthorEditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,8 @@ Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index')
 
 //author
 Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
-Route::get('authorupdate' , [AuthorController::class , 'update'])->name('authorupdate.index');
+Route::get('authoredit/edit' , [AuthorEditController::class , 'edit'])->name('authoredit.edit');
+Route::post('authoredit/{id}/update' , [AuthorEditController::class , 'update'])->name('authoredit.update');
 
 //Blog
 Route::get('blogs' , [BlogController::class , 'index'])->name('blogs.index');
