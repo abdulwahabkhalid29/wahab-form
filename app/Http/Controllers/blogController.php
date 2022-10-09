@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 
 class BlogController extends Controller
 {
     public function index(){
+        $user = User::where('id',auth()->user()->id)->first();
         $blogs = Blog::get();
-        return view('blogs.index' , compact('blogs'));
+        return view('blogs.index' , compact('blogs','user'));
     }
     public function create(){
+        $user = User::where('id',auth()->user()->id)->first();
         $categories = Category::get();
-        return view('blogs.create' , compact('categories'));
+        return view('blogs.create' , compact('categories','user'));
     }
     public function store(Request $request){
         $request->validate([
@@ -45,9 +48,10 @@ class BlogController extends Controller
         }
     }
     public function edit($id){
+        $user = User::where('id',auth()->user()->id)->first();
         $blog = Blog::where('id',$id)->first();
         $categories = Category::get();
-        return view('blogs.edit',compact('blog','categories'));
+        return view('blogs.edit',compact('blog','categories','user'));
     }
     public function update(Request $request, $id){
         $request->validate([ 

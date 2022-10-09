@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,8 @@ class HomeController extends Controller
             return view('web.pages.index' , compact('blogs'));
         }
         elseif(auth()->user()->role_id == 3){
-            return view('author.dashboard');
+        $user = User::where('id',auth()->user()->id)->first();
+            return view('author.dashboard',compact('user'));
         }
     }
 }

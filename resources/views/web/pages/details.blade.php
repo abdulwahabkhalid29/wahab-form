@@ -102,26 +102,24 @@
                         <div class="author-meta  mt-60">
                             <div class="media flex-column flex-md-row">
                                 <div class="media-left">
-                                    <a href="#"><img src="{{asset('assets/img/user/user-03.jpg')}}" alt=""> </a>
+                                    <a href="#"><img src="{{asset('upload/thumbnail/'.$user->thumbnail)}}" alt=""> </a>
                                 </div>
                                 <div class="media-body">
                                     <span class="media-heading">
-                                        <a href="#">Richard</a>
+                                        <a href="#">{{ $blog->author->name }}</a>
                                     </span>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiu smod tempor ut laboredolore magna aliqua. Ut enim ad
-                                        minim doing veniam, quis nostrud exerci tation ullamco laboris nisi. </p>
+                                    <p>{{ $user->about }}</p>
                                     <div class="social">
-                                        <a href="../../../index.htm" target="_blank">
+                                        <a href="{{ $user->facebook }}" target="_blank">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
-                                        <a href="../../../index-1.htm" target="_blank">
+                                        <a href="{{ $user->twitter }}" target="_blank">
                                             <i class="fab fa-twitter"></i>
                                         </a>
-                                        <a href="../../../ServiceLogin.html" target="_blank">
+                                        <a href="{{ $user->google }}" target="_blank">
                                             <i class="fab fa-google-plus-g"></i>
                                         </a>
-                                        <a href="../../../index-2.htm" target="_blank">
+                                        <a href="{{ $user->linkedin }}" target="_blank">
                                             <i class="fab fa-linkedin-in"></i>
                                         </a>
                                     </div>

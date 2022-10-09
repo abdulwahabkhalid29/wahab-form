@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('authorimg')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->string('about')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('google')->nullable();
-            $table->string('linkin')->nullable();
+            $table->string('linkedin')->nullable();
 
             
         });

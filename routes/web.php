@@ -7,7 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\AuthorEditController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +42,10 @@ Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index')
 
 //author
 Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
-Route::get('authoredit/edit' , [AuthorEditController::class , 'edit'])->name('authoredit.edit');
-Route::post('authoredit/{id}/update' , [AuthorEditController::class , 'update'])->name('authoredit.update');
+
+//profile
+Route::get('author/profile' , [ProfileController::class , 'profile'])->name('profile.edit');
+Route::post('author/profile-update' , [ProfileController::class , 'update'])->name('profile.update');
 
 //Blog
 Route::get('blogs' , [BlogController::class , 'index'])->name('blogs.index');
