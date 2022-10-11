@@ -102,24 +102,24 @@
                         <div class="author-meta  mt-60">
                             <div class="media flex-column flex-md-row">
                                 <div class="media-left">
-                                    <a href="#"><img src="{{asset('upload/thumbnail/'.$user->thumbnail)}}" alt=""> </a>
+                                    <a href="#"><img src="{{asset('upload/thumbnail/'.$blog->author->thumbnail)}}" alt=""> </a>
                                 </div>
                                 <div class="media-body">
                                     <span class="media-heading">
                                         <a href="#">{{ $blog->author->name }}</a>
                                     </span>
-                                    <p>{{ $user->about }}</p>
+                                    <p>{{ $blog->author->about }}</p>
                                     <div class="social">
-                                        <a href="{{ $user->facebook }}" target="_blank">
+                                        <a href="{{ $blog->author->facebook }}" target="_blank">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
-                                        <a href="{{ $user->twitter }}" target="_blank">
+                                        <a href="{{ $blog->author->twitter }}" target="_blank">
                                             <i class="fab fa-twitter"></i>
                                         </a>
-                                        <a href="{{ $user->google }}" target="_blank">
+                                        <a href="{{ $blog->author->google }}" target="_blank">
                                             <i class="fab fa-google-plus-g"></i>
                                         </a>
-                                        <a href="{{ $user->linkedin }}" target="_blank">
+                                        <a href="{{ $blog->author->linkedin }}" target="_blank">
                                             <i class="fab fa-linkedin-in"></i>
                                         </a>
                                     </div>
