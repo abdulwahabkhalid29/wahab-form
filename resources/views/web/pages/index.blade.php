@@ -1,4 +1,20 @@
 @extends('web.layout.scaffold')
+@push('styles')
+    <style>
+    .pagination {
+        display: block ;
+        margin: 0 ;
+        overflow: hidden ;
+        border-radius: 0 ;
+        padding-bottom: 3px ;
+    }
+    .page-item{
+        display: inline-block;
+    margin-right: 2px;
+    margin-bottom: 10px;
+    }
+    </style>
+@endpush
 @section('content')
 <main>
     <!-- hero-area start -->
@@ -6,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                        <a href="{{ route('home')}}">Blog</a>
+                    <a href="{{route('home')}}">Blog</a>
                     <div class="text-right">
                     @auth
                         Hello, {{auth()->user()->name}}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
@@ -40,29 +56,26 @@
                 <div class="col-xl-8 col-lg-8 col-md-12">
                     <div class="postbox mb-40">
                         @foreach($blogs as $blog)
-                        <div class="mt-5 postbox__thumb mb-25">
-                            <a href="{{route('blog/details' , $blog->id)}}">
-                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
+                        <div class="postbox__thumb mb-25">
+                            <a href="{{ route('web.pages.details' , $blog->id) }}">
+                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="d" height="100%" width="100%">
                             </a>
                         </div>
                         <div class="postbox__text">
                             <div class="postbox__text-meta pb-20">
                                 <ul>
-                                    
-                                <li>
+                                    <li>
                                         <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category->name }}</a>
+                                            <a href="#" tabindex="0">{{( $blog->category->name )}}</a>
                                         </span>
                                     </li>
-                                    
-                                    
                                     <li>
                                         <i class="fas fa-calendar-alt"></i>
                                         <span>{{ date('d M Y' , strtotime( $blog->created_at ))}}</span>
                                     </li>
                                     <li>
                                         <i class="far fa-comment"></i>
-                                        <span>(08)</span>
+                                        <span>(00)</span>
                                     </li>
                                 </ul>
                             </div>
@@ -72,12 +85,14 @@
                             <div class="desc-text mb-20">
                                  {{ $blog->short_description }}
                             </div>
-                            <a href="{{route('blog/details' , $blog->id)}}" class="read-more">read more</a>
+                            <div class="mb-5">
+                                <a href="{{ route('web.pages.details' , $blog->id) }}" class="read-more">read more</a>
+                            </div>
                         </div>
                     @endforeach
 
 
-                        
+
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12">
@@ -182,6 +197,14 @@
                         </div>
                     </div>
                     <div class="widget widget-border mb-40">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul>
+                            @foreach($categories as $category)
+                                <li><a href="{{route('web.pages.categoryWise',$category->id)}}">{{$category->name}} <span>{{$category->categoryCount($category->id)}}</span></a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Subscribe our Newsletter!</h3>
                         <p>Subscribe to our email newsletter to receive useful articles and special offers.</p>
                         <form class="widget-subscribe" action="#">
@@ -233,32 +256,8 @@
             </div>
 
             <div class="row mt-10">
-                <div class="col-xl-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="{{url('details')}}">Prev</a>
-                            </li>
-                            <li class="active">
-                                <a href="{{url('details')}}">
-                                    <span>1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">
-                                    <span>2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">
-                                    <span>3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">Next</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-md-12">
+                    {{ $blogs->links() }}
                 </div>
             </div>
         </div>

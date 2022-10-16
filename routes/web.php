@@ -27,6 +27,9 @@ Route::get('admin',[AdminController::class,'admin'])->name('admin.dashboard');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('blog/{id}/details', [IndexController::class, 'details'])->name('web.pages.details');
+Route::get('category/{id}', [IndexController::class, 'categoryWise'])->name('web.pages.categoryWise');
+Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pages.authorWise');
 
 //category
 Route::get('categories' , [CategoryController::class , 'category'])->name('categories.category');
@@ -44,7 +47,7 @@ Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index')
 Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
 
 //profile
-Route::get('author/profile' , [ProfileController::class , 'profile'])->name('profile.edit');
+Route::get('authors/profile' , [ProfileController::class , 'profile'])->name('profile.edit');
 Route::post('author/profile-update' , [ProfileController::class , 'update'])->name('profile.update');
 
 //Blog
@@ -54,3 +57,6 @@ Route::post('store', [BlogController::class , 'store'])->name('blogs.store');
 Route::get('blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
 Route::post('blogs/{id}/update', [BlogController::class, 'update'])->name('blogs.update');
 Route::get('blogs/{id}/delete', [BlogController::class, 'delete'])->name('blogs.delete');
+
+//Nav
+Route::get('nav' , [NavController::class , 'nav'])->name('include.author_left_nav');
