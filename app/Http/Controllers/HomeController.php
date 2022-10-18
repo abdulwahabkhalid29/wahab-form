@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -29,8 +30,10 @@ class HomeController extends Controller
             return view('admin.dashboard');
         }
         elseif(auth()->user()->role_id == 2){
-        $blogs = Blog::where('status', 1)->get();
-            return view('web.pages.index' , compact('blogs'));
+            $popularPosts = Blog::orderBy('views','DESC')->take(4)->get();
+            $blogs = Blog::get();
+            $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
+            return view('web.pages.index' , compact('blogs','popularPosts','categories'));
         }
         elseif(auth()->user()->role_id == 3){
         $user = User::where('id',auth()->user()->id)->first();

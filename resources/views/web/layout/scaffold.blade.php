@@ -10,8 +10,9 @@
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
         <!-- Place favicon.ico in the root directory -->
-        @stack('styles')
 		@include('web.partials.styles')
+        @stack('styles')
+
     </head>
     <body>
         <!--[if lte IE 9]>

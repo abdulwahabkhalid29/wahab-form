@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('google')->nullable();
             $table->string('linkedin')->nullable();
 
+
             
         });
     }
