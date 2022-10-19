@@ -31,7 +31,7 @@ class HomeController extends Controller
         }
         elseif(auth()->user()->role_id == 2){
             $popularPosts = Blog::orderBy('views','DESC')->take(4)->get();
-            $blogs = Blog::get();
+            $blogs = Blog::paginate();
             $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
             return view('web.pages.index' , compact('blogs','popularPosts','categories'));
         }

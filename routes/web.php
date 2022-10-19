@@ -8,6 +8,7 @@ use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +61,7 @@ Route::get('blogs/{id}/delete', [BlogController::class, 'delete'])->name('blogs.
 
 //Nav
 Route::get('nav' , [NavController::class , 'nav'])->name('include.author_left_nav');
+
+//User Profile
+Route::get('profile', [UserProfileController::class, 'edit'])->name('web.profile.edit');
+Route::post('profile/update', [UserProfileController::class, 'update'])->name('web.profile.update');

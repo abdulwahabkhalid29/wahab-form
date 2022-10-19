@@ -25,7 +25,7 @@
                     <a href="{{route('home')}}">Blog</a>
                     <div class="text-right">
                     @auth
-                        Hello, {{auth()->user()->name}}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
+                        Hello,<a href="{{route('web.profile.edit')}}">{{auth()->user()->name}}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
@@ -192,7 +192,7 @@
 
             <div class="row mt-10">
                 <div class="col-md-12">
-                    {{ $blogs->links() }}
+                {{$blogs->links()}}
                 </div>
             </div>
         </div>
