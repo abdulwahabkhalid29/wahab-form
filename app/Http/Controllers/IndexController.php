@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Comment;
 
 
 class IndexController extends Controller
@@ -29,7 +30,10 @@ class IndexController extends Controller
         //Updating Views to Blog table
         $views  = Blog::where('id',$id)->update(['views' => $newViews]);
 
-        return view('web.pages.details' , compact('blog','alsoLike','categories','popularPosts'));
+        //Comment
+        $comments = Comment::where('blog_id',$id)->get();
+
+        return view('web.pages.details' , compact('blog','alsoLike','categories','popularPosts','comments'));
     }
     public function categoryWise($id){
         $blog = Category::where('id',$id)->firstOrFail();

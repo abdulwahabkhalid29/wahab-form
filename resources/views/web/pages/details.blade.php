@@ -176,62 +176,37 @@
                         </div>
 
                          <!-- post-comments -->
-                        <div class="post-comments mt-30">
+                         <div class="post-comments mt-30">
                             <div class="section-title mb-30">
                                 <h2>Recent Comments</h2>
                             </div>
                             <div class="latest-comments">
                                 <ul>
-                                    <li>
-                                        <div class="comments-box">
-                                            <div class="comments-avatar">
-                                                <img src="{{asset('assets/img/user/user-01.jpg')}}" alt="">
-                                            </div>
-                                            <div class="comments-text">
-                                                <div class="avatar-name">
-                                                    <h5>Omar Elnagar</h5>
-                                                    <span>September 13, 2018 at 10:38 AM</span>
-                                                </div>
-                                                <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They call
-                                                    him Flipper Flipper the faster than lightning. No one you see is smarter than he</p>
-                                                <a href="#"><i class="fas fa-reply-all"></i> Reply</a>
-                                            </div>
-                                        </div>
-                                        <ul class="comments-reply">
-                                            <li>
-                                                <div class="comments-box">
-                                                    <div class="comments-avatar">
-                                                        <img src="{{asset('assets/img/user/user-02.jpg')}}" alt="">
+                                    @forelse ($comments as $comment)
+                                        <li>
+                                            <div class="comments-box">
+                                                <div class="comments-avatar">
+                                                    @if(!empty($comment->reader->thumbnail))
+                                                        <img src="{{asset('upload/profile/'.$comment->reader->thumbnail)}}" alt="">
+                                                    @else
+                                                        <img src="{{asset('assets/img/placeholder.png')}}" alt="">
+                                                    @endif
+
                                                     </div>
                                                     <div class="comments-text">
                                                         <div class="avatar-name">
-                                                            <h5>Omar Elnagar</h5>
-                                                            <span>September 13, 2018 at 10:38 AM</span>
+                                                            <h5>{{$comment->reader->name}}</h5>
+                                                            <span>{{date('j F, Y',strtotime($comment->created_at))}}</span>
                                                         </div>
-                                                        <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They
-                                                            call him Flipper Flipper the faster than lightning. No one you see is smarter than he</p>
-                                                        <a href="#"><i class="fas fa-reply-all"></i> Reply</a>
+                                                        <p>{{$comment->comment}}</p>
                                                     </div>
                                                 </div>
+
                                             </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="comments-box">
-                                            <div class="comments-avatar">
-                                                <img src="{{asset('assets/img/user/user-05.jpg')}}" alt="">
-                                            </div>
-                                            <div class="comments-text">
-                                                <div class="avatar-name">
-                                                    <h5>Omar Elnagar</h5>
-                                                    <span>September 13, 2018 at 10:38 AM</span>
-                                                </div>
-                                                <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They call
-                                                    him Flipper Flipper the faster than lightning. No one you see is smarter than he</p>
-                                                <a href="#"><i class="fas fa-reply-all"></i> Reply</a>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @empty
+                                           <i> No comment found</i>
+                                    @endforelse
+
                                 </ul>
                             </div>
                         </div>
@@ -241,16 +216,13 @@
                             <div class="section-title mb-30">
                                 <h2>Recent Comments</h2>
                             </div>
-                            <form action="#">
+                            <form action="{{route('web.comment.store')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
-                                    <div class="col-xl-6">
-                                        <input type="text" placeholder="Your Name">
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <input type="text" placeholder="Your Email">
-                                    </div>
                                     <div class="col-xl-12">
-                                        <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Your Comments"></textarea>
+                                        <input type="hidden" name="blog_id" value="{{$blog->id}}">
+                                        <input type="hidden" name="author_id" value="{{$blog->author_id}}">
+                                        <textarea name="comment" id="comments" cols="30" rows="10" placeholder="Your Comments" required></textarea>
                                         <button class="btn brand-btn" type="submit">Send message</button>
                                     </div>
                                 </div>
